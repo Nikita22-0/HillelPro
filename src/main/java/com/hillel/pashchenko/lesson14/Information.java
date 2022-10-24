@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 
 public class Information {
-    private ArrayList<String> nickname;
+     ArrayList<String> nickname;
     private LinkedHashSet<String> mail;
     private LinkedHashMap<String, String> account;
 
