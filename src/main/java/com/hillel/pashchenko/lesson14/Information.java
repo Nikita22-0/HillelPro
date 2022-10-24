@@ -10,6 +10,12 @@ public class Information {
     private LinkedHashMap<String, String> account;
 
 
+
+
+
+
+
+
     public Information() {
         this.nickname = new ArrayList<>();
         this.mail = new LinkedHashSet <>();
