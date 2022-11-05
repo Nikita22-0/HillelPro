@@ -12,7 +12,9 @@ public class Main {
 
         Consumer<String> arraySymbols = (string) -> {
             char[] chars = string.toCharArray();
-            System.out.println(Arrays.toString(chars));
+            for (char aChar : chars) {
+                System.out.println(aChar);
+            }
         };
         arraySymbols.accept("Hello");
         System.out.println();
