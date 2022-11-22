@@ -1,5 +1,7 @@
 # Default ignored files
 /shelf/
+mainPro.iml
+.gitignore
 /workspace.xml
  ../../.gitconfig
         ../../.lesshst
@@ -38,4 +40,3 @@
         ../../ntuser.dat{4c58dfee-1994-11ed-b46b-287fcfd1f57d}.TMContainer00000000000000000001.regtrans-ms
         ../../ntuser.dat{4c58dfee-1994-11ed-b46b-287fcfd1f57d}.TMContainer00000000000000000002.regtrans-ms
         ../../ntuser.ini
-        C:\Users\User\IdeaProjects\mainPro\mainPro.iml
