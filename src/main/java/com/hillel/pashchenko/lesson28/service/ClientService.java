@@ -1,6 +1,5 @@
 package com.hillel.pashchenko.lesson28.service;
 
-import com.hillel.pashchenko.lesson28.entity.Account;
 import com.hillel.pashchenko.lesson28.entity.Client;
 import com.hillel.pashchenko.lesson28.util.Database;
 
