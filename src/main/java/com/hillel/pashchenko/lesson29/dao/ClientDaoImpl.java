@@ -9,6 +9,8 @@ import org.hibernate.query.Query;
 
 public class ClientDaoImpl implements ClientDao{
 
+    private final String QUERY_BY_PHONE = "from Client where phone = :phone";
+
     @Override
     public void save(Client client) {
         final SessionFactory sessionFactory = HibernateConfig.getSessionFactory();
@@ -65,7 +67,7 @@ public class ClientDaoImpl implements ClientDao{
         final Session session = sessionFactory.openSession();
         final Transaction transaction = session.beginTransaction();
 
-        final Query query = session.createQuery("from Client where phone = :phone");
+        final Query query = session.createQuery(QUERY_BY_PHONE);
         query.setParameter("phone", phone);
         final Client client = (Client) query.getSingleResult();
 
