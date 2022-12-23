@@ -26,7 +26,7 @@ public class Main {
 
         final AccountService accountService = new AccountService();
         final Account account = new Account();
-//        account.setClient_id(20);
+//        account.setClientId(20);
 //        account.setNumber("5468953768165183");
 //        account.setValue(22000.4);
 //        account.setId(19);

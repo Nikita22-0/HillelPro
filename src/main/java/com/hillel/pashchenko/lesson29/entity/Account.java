@@ -13,7 +13,8 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int client_id;
+    @Column(name = "client_id")
+    private int clientId;
     private String number;
     private double value;
 
@@ -21,7 +22,7 @@ public class Account {
     public String toString() {
         return "Account: " +
                 "id - " + id +
-                ", client_id - " + client_id +
+                ", client id - " + clientId +
                 ", number - " + number +
                 ", value - " + value;
     }
