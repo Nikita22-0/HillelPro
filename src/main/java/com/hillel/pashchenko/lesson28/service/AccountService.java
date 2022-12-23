@@ -1,6 +1,7 @@
 package com.hillel.pashchenko.lesson28.service;
 
 import com.hillel.pashchenko.lesson28.entity.Account;
+import com.hillel.pashchenko.lesson28.entity.Client;
 import com.hillel.pashchenko.lesson28.util.Database;
 
 import java.sql.*;
@@ -84,7 +85,7 @@ public class AccountService {
         }
     }
 
-    public void getAccountByNumber(Account account) {
+    public Account getAccountByNumber(Account account) {
         try (Connection connection = Database.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT number FROM accounts WHERE value > ?")) {
             connection.setAutoCommit(false);
@@ -97,13 +98,14 @@ public class AccountService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return account;
     }
-    public void getClientByClient_id(Account account) {
+    public Account getClientByClientId(Account account) {
         try (Connection connection = Database.getConnection();
              Statement statement = connection.createStatement()) {
             connection.setAutoCommit(false);
             ResultSet resultSet = statement.executeQuery(
-                    "SELECT * FROM clients INNER JOIN accounts ON clients.id = accounts.client_id");
+                    "SELECT * FROM clients c INNER JOIN accounts ac ON clients.id = accounts.client_id");
             while (resultSet.next()){
                 System.out.println("Client: " +
                         "id - " + resultSet.getInt("id") +
@@ -117,5 +119,6 @@ public class AccountService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return account;
     }
 }

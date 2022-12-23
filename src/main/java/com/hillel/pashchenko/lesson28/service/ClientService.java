@@ -15,7 +15,7 @@ public class ClientService {
             "OR name = ? OR email = ? OR phone = ? OR about = ? OR age = ?";
     private String CLIENT_QUERY_DELETE = "DELETE FROM clients WHERE id = ? OR name = ? OR email = ? OR phone = ? " +
             "OR about = ? OR age = ?";
-    private String alter_age = "UPDATE clients SET age = ? WHERE id = ?";
+    private String ALTER_AGE = "UPDATE clients SET age = ? WHERE id = ?";
 
 
     public List<Client> getAll() {
@@ -122,8 +122,8 @@ public class ClientService {
              Statement statement = connection.createStatement()) {
             connection.setAutoCommit(false);
             ResultSet resultSet = statement.executeQuery("SELECT c.name, c.email, s.alias FROM clients c " +
-                    "FULL JOIN client_status cs ON c.id = cs.client_id " +
-                    "FULL JOIN statuses s ON cs.status_id = s.id WHERE age > 18");
+                    "INNER JOIN client_status cs ON c.id = cs.client_id " +
+                    "INNER JOIN statuses s ON cs.status_id = s.id WHERE age > 18");
             while (resultSet.next()){
                 System.out.println("Client: " +
                         "name - " + resultSet.getString("name") +
@@ -136,19 +136,9 @@ public class ClientService {
         }
     }
 
-    public void alterTable(){
-        try (Connection connection = Database.getConnection();
-             Statement statement = connection.createStatement()){
-            connection.setAutoCommit(false);
-            statement.execute("ALTER TABLE clients ADD age int");
-            connection.commit();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
     public void alterAgeInClients(Client client) {
         try (Connection connection = Database.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(alter_age)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(ALTER_AGE)) {
             connection.setAutoCommit(false);
             preparedStatement.setInt(1, client.getAge());
             preparedStatement.setInt(2, client.getId());
