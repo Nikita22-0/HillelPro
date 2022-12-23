@@ -20,9 +20,9 @@ public class Main {
 //        clientService.save(client);
 
 //        final Client getById = clientService.getById(10);
-//        System.out.println(getById.toString());
+//        System.out.println(getById);
 //        final Client byPhone = clientService.getByPhone(501235648);
-//        System.out.println(byPhone.toString());
+//        System.out.println(byPhone);
 
         final AccountService accountService = new AccountService();
         final Account account = new Account();
@@ -31,7 +31,7 @@ public class Main {
 //        account.setValue(22000.4);
 //        account.setId(19);
 //        final Account byId = accountService.getById(10);
-//        System.out.println(byId.toString());
+//        System.out.println(byId);
 
         final StatusService statusService = new StatusService();
         final Status status = new Status();
