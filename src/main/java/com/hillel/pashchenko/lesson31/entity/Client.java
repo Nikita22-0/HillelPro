@@ -27,7 +27,7 @@ public class Client {
     private Account account;
 
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
-    private Set<Status> statusesID;
+    private Set<Status> statusIds;
 
     @ManyToMany
     @JoinTable(
