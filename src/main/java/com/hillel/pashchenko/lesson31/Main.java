@@ -28,7 +28,7 @@ public class Main {
         status.setAlias("STANDARD");
         status.setDescription("Standard access");
         statuses.add(status);
-        client.setStatusesID(statuses);
+        client.setStatusIds(statuses);
         client.setStatuses(statuses);
         clients.add(client);
         status.setClients(clients);
