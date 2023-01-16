@@ -1,12 +1,14 @@
 package com.hillel.pashchenko.lesson29.dao;
 
 import com.hillel.pashchenko.lesson29.entity.Account;
+import com.hillel.pashchenko.lesson29.service.AccountService;
 import com.hillel.pashchenko.lesson29.util.HibernateConfig;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-public class AccountDaoImpl implements AccountDao{
+public class AccountDaoImpl implements AccountDao {
 
     @Override
     public void save(Account account) {
@@ -56,5 +58,12 @@ public class AccountDaoImpl implements AccountDao{
         session.close();
 
         return account;
+    }
+
+    public void checkAccount(final Account account) {
+        final AccountService accountService = new AccountService();
+        final Logger logger = Logger.getLogger(AccountService.class);
+        logger.debug(account.toString());
+        accountService.checkAccount(account);
     }
 }

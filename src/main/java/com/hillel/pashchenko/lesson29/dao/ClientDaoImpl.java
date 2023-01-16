@@ -1,13 +1,15 @@
 package com.hillel.pashchenko.lesson29.dao;
 
 import com.hillel.pashchenko.lesson29.entity.Client;
+import com.hillel.pashchenko.lesson29.service.ClientService;
 import com.hillel.pashchenko.lesson29.util.HibernateConfig;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-public class ClientDaoImpl implements ClientDao{
+public class ClientDaoImpl implements ClientDao {
 
     private final String QUERY_BY_PHONE = "from Client where phone = :phone";
 
@@ -75,5 +77,12 @@ public class ClientDaoImpl implements ClientDao{
         session.close();
 
         return client;
+    }
+
+    public void checkClient(final Client client) {
+        final ClientService clientService = new ClientService();
+        final Logger logger = Logger.getLogger(ClientService.class);
+        logger.debug(client.toString());
+        clientService.checkClient(client);
     }
 }

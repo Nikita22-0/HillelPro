@@ -1,12 +1,14 @@
 package com.hillel.pashchenko.lesson29.dao;
 
 import com.hillel.pashchenko.lesson29.entity.Status;
+import com.hillel.pashchenko.lesson29.service.StatusService;
 import com.hillel.pashchenko.lesson29.util.HibernateConfig;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-public class StatusDaoImpl implements StatusDao{
+public class StatusDaoImpl implements StatusDao {
     @Override
     public void save(Status status) {
         final SessionFactory sessionFactory = HibernateConfig.getSessionFactory();
@@ -55,5 +57,12 @@ public class StatusDaoImpl implements StatusDao{
         session.close();
 
         return status;
+    }
+
+    public void checkStatus(final Status status) {
+        final StatusService statusService = new StatusService();
+        final Logger logger = Logger.getLogger(StatusService.class);
+        logger.debug(status.toString());
+        statusService.checkStatus(status);
     }
 }
