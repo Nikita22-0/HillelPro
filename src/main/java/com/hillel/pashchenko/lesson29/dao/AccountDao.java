@@ -12,4 +12,6 @@ public interface AccountDao {
 
     Account getById(int id);
 
+    void checkAccount(Account account);
+
 }

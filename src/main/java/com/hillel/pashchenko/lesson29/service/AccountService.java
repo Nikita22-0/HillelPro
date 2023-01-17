@@ -10,27 +10,34 @@ public class AccountService {
     private final Logger logger = Logger.getLogger(AccountService.class);
 
     public void save(Account account) {
-        if (account == null){
+        logger.info(account);
+        if (account == null) {
             logger.error("Account is null");
         }
         accountDao.save(account);
     }
 
     public void update(Account account) {
-        if (account == null){
+        logger.info(account);
+        if (account == null) {
             logger.error("Account is null");
         }
         accountDao.update(account);
     }
 
     public void delete(Account account) {
-        if (account == null){
+        logger.info(account);
+        if (account == null) {
             logger.error("Account is null");
         }
         accountDao.delete(account);
     }
 
     public Account getById(int id) {
+        logger.info(id);
+        if (id == 0) {
+            logger.error("Id is null");
+        }
         return accountDao.getById(id);
     }
 

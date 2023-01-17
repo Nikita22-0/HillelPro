@@ -11,27 +11,34 @@ public class StatusService {
     private final Logger logger = Logger.getLogger(StatusService.class);
 
     public void save(Status status) {
-        if (status == null){
+        logger.info(status);
+        if (status == null) {
             logger.error("Status is null");
         }
         statusDao.save(status);
     }
 
     public void update(Status status) {
-        if (status == null){
+        logger.info(status);
+        if (status == null) {
             logger.error("Status is null");
         }
         statusDao.update(status);
     }
 
     public void delete(Status status) {
-        if (status == null){
+        logger.info(status);
+        if (status == null) {
             logger.error("Status is null");
         }
         statusDao.delete(status);
     }
 
     public Status getById(int id) {
+        logger.info(id);
+        if (id == 0) {
+            logger.error("Id is null");
+        }
         return statusDao.getById(id);
     }
 

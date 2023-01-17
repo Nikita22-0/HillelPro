@@ -12,4 +12,6 @@ public interface StatusDao {
     void delete(Status status);
 
     Status getById(int id);
+
+    void checkStatus(Status status);
 }

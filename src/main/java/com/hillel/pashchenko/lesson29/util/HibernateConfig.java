@@ -29,7 +29,6 @@ public class HibernateConfig {
                 sessionFactory = configuration.buildSessionFactory(builder.build());
             } catch (Exception e) {
                 logger.error("Connection fail");
-                System.out.println("Session factory Error: " + e);
             }
         }
         return sessionFactory;

@@ -1,7 +1,6 @@
 package com.hillel.pashchenko.lesson29.dao;
 
 import com.hillel.pashchenko.lesson29.entity.Client;
-import org.hibernate.query.Query;
 
 public interface ClientDao {
 
@@ -14,4 +13,6 @@ public interface ClientDao {
     Client getById(int id);
 
     Client getByPhone(int phone);
+
+    void checkClient(Client client);
 }
