@@ -13,6 +13,8 @@ public class ClientDaoImpl implements ClientDao {
 
     private final String QUERY_BY_PHONE = "from Client where phone = :phone";
 
+    final Logger logger = Logger.getLogger(ClientService.class);
+
     @Override
     public void save(Client client) {
         final SessionFactory sessionFactory = HibernateConfig.getSessionFactory();
@@ -20,6 +22,7 @@ public class ClientDaoImpl implements ClientDao {
         final Transaction transaction = session.beginTransaction();
 
         session.save(client);
+        logger.debug(client);
 
         transaction.commit();
         session.close();
@@ -32,6 +35,7 @@ public class ClientDaoImpl implements ClientDao {
         final Transaction transaction = session.beginTransaction();
 
         session.update(client);
+        logger.debug(client);
 
         transaction.commit();
         session.close();
@@ -44,6 +48,7 @@ public class ClientDaoImpl implements ClientDao {
         final Transaction transaction = session.beginTransaction();
 
         session.delete(client);
+        logger.debug(client);
 
         transaction.commit();
         session.close();
@@ -56,6 +61,7 @@ public class ClientDaoImpl implements ClientDao {
         final Transaction transaction = session.beginTransaction();
 
         final Client client = session.get(Client.class, id);
+        logger.debug(id);
 
         transaction.commit();
         session.close();
@@ -72,6 +78,7 @@ public class ClientDaoImpl implements ClientDao {
         final Query query = session.createQuery(QUERY_BY_PHONE);
         query.setParameter("phone", phone);
         final Client client = (Client) query.getSingleResult();
+        logger.debug(phone);
 
         transaction.commit();
         session.close();
@@ -81,7 +88,6 @@ public class ClientDaoImpl implements ClientDao {
 
     public void checkClient(final Client client) {
         final ClientService clientService = new ClientService();
-        final Logger logger = Logger.getLogger(ClientService.class);
         logger.debug(client.toString());
         clientService.checkClient(client);
     }

@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 public class AccountDaoImpl implements AccountDao {
+    final Logger logger = Logger.getLogger(AccountService.class);
 
     @Override
     public void save(Account account) {
@@ -17,6 +18,7 @@ public class AccountDaoImpl implements AccountDao {
         final Transaction transaction = session.beginTransaction();
 
         session.save(account);
+        logger.debug(account);
 
         transaction.commit();
         session.close();
@@ -29,6 +31,7 @@ public class AccountDaoImpl implements AccountDao {
         final Transaction transaction = session.beginTransaction();
 
         session.update(account);
+        logger.debug(account);
 
         transaction.commit();
         session.close();
@@ -41,6 +44,7 @@ public class AccountDaoImpl implements AccountDao {
         final Transaction transaction = session.beginTransaction();
 
         session.delete(account);
+        logger.debug(account);
 
         transaction.commit();
         session.close();
@@ -53,6 +57,7 @@ public class AccountDaoImpl implements AccountDao {
         final Transaction transaction = session.beginTransaction();
 
         final Account account = session.get(Account.class, id);
+        logger.debug(id);
 
         transaction.commit();
         session.close();
@@ -62,7 +67,6 @@ public class AccountDaoImpl implements AccountDao {
 
     public void checkAccount(final Account account) {
         final AccountService accountService = new AccountService();
-        final Logger logger = Logger.getLogger(AccountService.class);
         logger.debug(account.toString());
         accountService.checkAccount(account);
     }

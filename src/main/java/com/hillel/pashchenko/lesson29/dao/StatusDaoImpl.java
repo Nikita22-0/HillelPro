@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 public class StatusDaoImpl implements StatusDao {
+    final Logger logger = Logger.getLogger(StatusService.class);
     @Override
     public void save(Status status) {
         final SessionFactory sessionFactory = HibernateConfig.getSessionFactory();
@@ -16,6 +17,7 @@ public class StatusDaoImpl implements StatusDao {
         final Transaction transaction = session.beginTransaction();
 
         session.save(status);
+        logger.debug(status);
 
         transaction.commit();
         session.close();
@@ -28,6 +30,7 @@ public class StatusDaoImpl implements StatusDao {
         final Transaction transaction = session.beginTransaction();
 
         session.update(status);
+        logger.debug(status);
 
         transaction.commit();
         session.close();
@@ -40,6 +43,7 @@ public class StatusDaoImpl implements StatusDao {
         final Transaction transaction = session.beginTransaction();
 
         session.delete(status);
+        logger.debug(status);
 
         transaction.commit();
         session.close();
@@ -52,6 +56,7 @@ public class StatusDaoImpl implements StatusDao {
         final Transaction transaction = session.beginTransaction();
 
         final Status status = session.get(Status.class, id);
+        logger.debug(id);
 
         transaction.commit();
         session.close();
@@ -61,7 +66,6 @@ public class StatusDaoImpl implements StatusDao {
 
     public void checkStatus(final Status status) {
         final StatusService statusService = new StatusService();
-        final Logger logger = Logger.getLogger(StatusService.class);
         logger.debug(status.toString());
         statusService.checkStatus(status);
     }
